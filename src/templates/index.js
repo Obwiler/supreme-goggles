@@ -24,6 +24,7 @@ import { transformEffect } from "./effects/effect-transform";
 import { discoverEffect } from "./effects/effect-discover";
 import { recycleEffect } from "./effects/effect-recycle";
 import { delayedEffect } from "./effects/effect-delayed-effect";
+import { executeEffect } from "./effects/effect-execute";
 // ─── 条件模板 ───────────────────────────────────────────
 import { hasMarkCondition } from "./conditions/condition-has-mark";
 import { attributeCheckCondition } from "./conditions/condition-attribute-check";
@@ -71,7 +72,8 @@ const effectTemplates = {
     [EffectType.TRANSFORM]: transformEffect,
     [EffectType.DISCOVER]: discoverEffect,
     [EffectType.RECYCLE]: recycleEffect,
-    [EffectType.DELAYED_EFFECT]: delayedEffect
+    [EffectType.DELAYED_EFFECT]: delayedEffect,
+    [EffectType.EXECUTE]: executeEffect
 };
 const conditionTemplates = {
     [ConditionType.HAS_MARK]: hasMarkCondition,

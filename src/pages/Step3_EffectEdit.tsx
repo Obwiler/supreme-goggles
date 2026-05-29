@@ -259,9 +259,8 @@ function Step3_EffectEdit({ onNext, onPrev }: Step3Props) {
           if (arr[index]) {
             arr[index] = {
               ...arr[index],
-              [key]: value,
               ...(isTopLevel
-                ? {}
+                ? { [key]: value }
                 : { params: { ...((arr[index] as Record<string, unknown>).params || {}), [key]: value } }),
             };
           }
@@ -666,40 +665,44 @@ function Step3_EffectEdit({ onNext, onPrev }: Step3Props) {
                               }
                             />
                           </div>
-                          <div>
-                            <Text style={{ marginRight: 8 }}>承接主体</Text>
-                            <Input
-                              style={{ width: 150 }}
-                              placeholder="承接主体 key"
-                              value={eff.inheritTarget || ""}
-                              onChange={(e) =>
-                                handleInstanceParamChange(
-                                  skill.id,
-                                  "effects",
-                                  eIdx,
-                                  "inheritTarget",
-                                  e.target.value || undefined
-                                )
-                              }
-                            />
-                          </div>
-                          <div>
-                            <Text style={{ marginRight: 8 }}>保存为承接</Text>
-                            <Input
-                              style={{ width: 150 }}
-                              placeholder="保存为承接主体 key"
-                              value={eff.saveAsInherit || ""}
-                              onChange={(e) =>
-                                handleInstanceParamChange(
-                                  skill.id,
-                                  "effects",
-                                  eIdx,
-                                  "saveAsInherit",
-                                  e.target.value || undefined
-                                )
-                              }
-                            />
-                          </div>
+                          {!isBasic && (
+                            <>
+                              <div>
+                                <Text style={{ marginRight: 8 }}>承接主体</Text>
+                                <Input
+                                  style={{ width: 150 }}
+                                  placeholder="承接主体 key"
+                                  value={eff.inheritTarget || ""}
+                                  onChange={(e) =>
+                                    handleInstanceParamChange(
+                                      skill.id,
+                                      "effects",
+                                      eIdx,
+                                      "inheritTarget",
+                                      e.target.value || undefined
+                                    )
+                                  }
+                                />
+                              </div>
+                              <div>
+                                <Text style={{ marginRight: 8 }}>保存为承接</Text>
+                                <Input
+                                  style={{ width: 150 }}
+                                  placeholder="保存为承接主体 key"
+                                  value={eff.saveAsInherit || ""}
+                                  onChange={(e) =>
+                                    handleInstanceParamChange(
+                                      skill.id,
+                                      "effects",
+                                      eIdx,
+                                      "saveAsInherit",
+                                      e.target.value || undefined
+                                    )
+                                  }
+                                />
+                              </div>
+                            </>
+                          )}
                         </Space>
 
                         {eff.effectId &&

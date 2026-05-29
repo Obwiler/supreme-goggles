@@ -170,7 +170,8 @@ enum EffectType {
   TRANSFORM = "transform",
   DISCOVER = "discover",
   RECYCLE = "recycle",
-  DELAYED_EFFECT = "delayed_effect"
+  DELAYED_EFFECT = "delayed_effect",
+  EXECUTE = "execute"
 }
 
 // ─── 条件类型 ───────────────────────────────────────────
