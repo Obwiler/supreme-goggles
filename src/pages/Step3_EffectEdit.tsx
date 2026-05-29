@@ -779,7 +779,7 @@ function Step3_EffectEdit({ onNext, onPrev }: Step3Props) {
           <Button size="large" onClick={onPrev}>
             上一步
           </Button>
-          <Button type="primary" size="large" onClick={onNext}>
+          <Button type="primary" size="large" onClick={() => { handleApply(); onNext(); }}>
             下一步
           </Button>
         </Space>

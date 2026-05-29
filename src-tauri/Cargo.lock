@@ -235,7 +235,7 @@ dependencies = [
 
 [[package]]
 name = "cardmaker"
-version = "0.6.3"
+version = "0.8.3"
 dependencies = [
  "base64 0.22.1",
  "serde",

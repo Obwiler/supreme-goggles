@@ -24,7 +24,7 @@ function App() {
       <ErrorBoundary>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "32px 24px" }}>
           <h1 style={{ textAlign: "center", marginBottom: 32 }}>
-            CardMaker - 《对峙》卡牌编辑器 v0.6.3
+            CardMaker v0.8.3
           </h1>
           <Steps current={currentStep} items={steps} style={{ marginBottom: 32 }} />
           <div style={{ minHeight: 500 }}>
