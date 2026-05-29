@@ -237,6 +237,7 @@ dependencies = [
 name = "cardmaker"
 version = "0.6.3"
 dependencies = [
+ "base64 0.22.1",
  "serde",
  "serde_json",
  "tauri",

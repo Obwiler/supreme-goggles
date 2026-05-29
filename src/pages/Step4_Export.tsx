@@ -59,20 +59,28 @@ function Step4_Export({ onPrev }: Step4Props) {
   };
 
   const handleExportPNG = async () => {
-    if (!previewRef.current) return;
+    if (!previewRef.current || !currentCard) return;
     setExporting(true);
     try {
       const dataUrl = await toPng(previewRef.current, {
         quality: 1,
         pixelRatio: 3,
       });
-      const a = document.createElement("a");
-      a.href = dataUrl;
-      a.download = `${currentCard?.name || "card"}.png`;
-      a.click();
+      // dataUrl 格式: "data:image/png;base64,xxxxx"
+      const base64 = dataUrl.split(",")[1];
+      if (!base64) throw new Error("无效的图片数据");
+
+      const filePath = await save({
+        defaultPath: `${currentCard.name || "card"}.png`,
+        filters: [{ name: "PNG 图片", extensions: ["png"] }],
+        title: "导出卡牌 PNG",
+      });
+      if (!filePath) return; // 用户取消
+
+      await invoke("save_card_image", { path: filePath, dataBase64: base64 });
       message.success("PNG 已导出");
-    } catch {
-      message.error("PNG 导出失败");
+    } catch (e: any) {
+      message.error(`PNG 导出失败：${e?.message || e}`);
     } finally {
       setExporting(false);
     }
